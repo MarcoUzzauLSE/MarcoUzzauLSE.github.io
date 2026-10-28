@@ -1,0 +1,109 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": {
+    "text": "Annual inflation rates (%) in May 2019, in ascending order",
+    "font": "Arial",
+    "fontSize": 15,
+    "fontWeight": "bold",
+    "anchor": "middle",
+    "offset": 14
+  },
+  "width": 700,
+  "height": 200,
+  "padding": { "left": 10, "right": 15, "top": 10, "bottom": 10 },
+  "config": { "view": { "stroke": "#c9c98a" } },
+  "data": {
+    "values": [
+      { "geo": "Cyprus", "value": 0.2, "type": "country" },
+      { "geo": "Portugal", "value": 0.3, "type": "country" },
+      { "geo": "Greece", "value": 0.6, "type": "country" },
+      { "geo": "Denmark", "value": 0.7, "type": "country" },
+      { "geo": "Spain", "value": 0.9, "type": "country" },
+      { "geo": "Italy", "value": 0.9, "type": "country" },
+      { "geo": "Ireland", "value": 1.0, "type": "country" },
+      { "geo": "Croatia", "value": 1.0, "type": "country" },
+      { "geo": "France", "value": 1.1, "type": "country" },
+      { "geo": "Euro area", "value": 1.2, "type": "euro" },
+      { "geo": "Germany", "value": 1.3, "type": "country" },
+      { "geo": "Finland", "value": 1.3, "type": "country" },
+      { "geo": "EU", "value": 1.6, "type": "eu" },
+      { "geo": "Slovenia", "value": 1.6, "type": "country" },
+      { "geo": "Belgium", "value": 1.7, "type": "country" },
+      { "geo": "Malta", "value": 1.7, "type": "country" },
+      { "geo": "Austria", "value": 1.7, "type": "country" },
+      { "geo": "Sweden", "value": 2.1, "type": "country" },
+      { "geo": "United Kingdom", "value": 2.1, "type": "country" },
+      { "geo": "Luxembourg", "value": 2.2, "type": "country" },
+      { "geo": "Poland", "value": 2.2, "type": "country" },
+      { "geo": "Netherlands", "value": 2.3, "type": "country" },
+      { "geo": "Lithuania", "value": 2.5, "type": "country" },
+      { "geo": "Czechia", "value": 2.6, "type": "country" },
+      { "geo": "Slovakia", "value": 2.7, "type": "country" },
+      { "geo": "Bulgaria", "value": 2.9, "type": "country" },
+      { "geo": "Estonia", "value": 3.1, "type": "country" },
+      { "geo": "Latvia", "value": 3.5, "type": "country" },
+      { "geo": "Hungary", "value": 4.0, "type": "country" },
+      { "geo": "Romania", "value": 4.4, "type": "country" }
+    ]
+  },
+  "encoding": {
+    "x": {
+      "field": "geo",
+      "type": "nominal",
+      "title": null,
+      "sort": ["Cyprus", "Portugal", "Greece", "Denmark", "Spain", "Italy", "Ireland", "Croatia", "France", "Euro area", "Germany", "Finland", "EU", "Slovenia", "Belgium", "Malta", "Austria", "Sweden", "United Kingdom", "Luxembourg", "Poland", "Netherlands", "Lithuania", "Czechia", "Slovakia", "Bulgaria", "Estonia", "Latvia", "Hungary", "Romania"],
+      "axis": {
+        "labelAngle": 270,
+        "labelAlign": "right",
+        "labelBaseline": "middle",
+        "labelFont": "Arial",
+        "labelFontSize": 10,
+        "labelPadding": 6,
+        "ticks": false,
+        "domainColor": "#bbbbbb"
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": null,
+      "scale": { "domain": [0, 5], "nice": false },
+      "axis": {
+        "values": [0, 1, 2, 3, 4, 5],
+        "grid": false,
+        "ticks": false,
+        "domainColor": "#bbbbbb",
+        "labelFont": "Arial",
+        "labelFontSize": 11,
+        "format": "d",
+        "labelOverlap": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": { "type": "bar", "width": { "band": 0.6 } },
+      "encoding": {
+        "color": {
+          "field": "type",
+          "type": "nominal",
+          "scale": {
+            "domain": ["country", "euro", "eu"],
+            "range": ["#8DC63F", "#FF0000", "#00B0F0"]
+          },
+          "legend": null
+        },
+        "tooltip": [
+          { "field": "geo", "type": "nominal", "title": "Area" },
+          { "field": "value", "type": "quantitative", "title": "Inflation (%)", "format": ".1f" }
+        ]
+      }
+    },
+    {
+      "mark": { "type": "text", "dy": -6, "baseline": "bottom", "font": "Arial", "fontSize": 10 },
+      "encoding": {
+        "text": { "field": "value", "type": "quantitative", "format": ".1f" }
+      }
+    }
+  ]
+}

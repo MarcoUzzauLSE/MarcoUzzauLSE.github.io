@@ -1,0 +1,54 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Solar panels got cheaper as support policies arrived",
+  "width": 500,
+  "height": 320,
+  "data": { "url": "https://raw.githubusercontent.com/MarcoUzzauLSE/MarcoUzzauLSE.github.io/refs/heads/main/solar-pv-prices.csv" },
+  "transform": [{ "filter": "datum.Entity == 'World'" }],
+  "layer": [
+    {
+      "mark": { "type": "line", "color": "#e0a100", "strokeWidth": 3 },
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "title": "Year",
+          "axis": { "format": "d", "grid": false }
+        },
+        "y": {
+          "field": "Solar PV module cost",
+          "type": "quantitative",
+          "scale": { "type": "log" },
+          "title": "US$ per watt (log scale)",
+          "axis": { "values": [0.1, 1, 10, 100], "format": "~g" }
+        }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "Year": 2000, "label": "Germany: renewable energy law (2000)", "y": 150 },
+          { "Year": 2006, "label": "US: solar tax credit (2006)", "y": 60 }
+        ]
+      },
+      "mark": { "type": "rule", "strokeDash": [4, 4], "color": "#444" },
+      "encoding": {
+        "x": { "field": "Year", "type": "quantitative" }
+      }
+    },
+    {
+      "data": {
+        "values": [
+          { "Year": 2000, "label": "Germany: renewable energy law (2000)", "y": 150 },
+          { "Year": 2006, "label": "US: solar tax credit (2006)", "y": 60 }
+        ]
+      },
+      "mark": { "type": "text", "align": "left", "dx": 5, "fontSize": 11, "color": "#444" },
+      "encoding": {
+        "x": { "field": "Year", "type": "quantitative" },
+        "y": { "field": "y", "type": "quantitative", "scale": { "type": "log" } },
+        "text": { "field": "label" }
+      }
+    }
+  ]
+}

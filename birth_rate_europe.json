@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Birth rate in Europe (per 1,000 people)",
+  "data": {
+    "url": "https://api.worldbank.org/v2/country/ita;fra;esp;deu/indicator/SP.DYN.CBRT.IN?format=json&per_page=1000",
+    "format": {"property": "[1]"}
+  },
+  "mark": "line",
+  "encoding": {
+    "x": {
+      "field": "date",
+      "type": "temporal",
+      "title": "Date"
+      },
+    "y": {
+      "field": "value",
+      "type": "quantitative",
+      "title": "Birth rate"
+      },
+    "color": {
+      "field": "country.value",
+      "type": "nominal",
+      "scale": {"range": ["#002395","#ffce00","#239F40","#c60b1e"]}
+    }
+  }
+}

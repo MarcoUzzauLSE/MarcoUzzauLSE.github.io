@@ -1,121 +1,96 @@
 <!DOCTYPE html>
-<!-- This HTML file provides a simple example of a portfolio page. It contains a header, a few sections, and a few charts. -->
-<!-- It works with the three css files in this folder: example1.css, example2.css and example3.css. -->
-<!-- The HTML file defines the structure of the page, and the CSS files define how it looks. -->
-<!-- The CSS examples are all designed to work with this page. Try swapping them out on line 29 and see what happens. -->
+<html lang="en">
 
-<!-- Take a look around and make your own copy to adapt for your own use. -->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marco Uzzau</title>
 
-<!-- This is a comment -->
-<!-- Comments are not displayed in the browser -->
-<!-- They can be used to leave notes in the code -->
-
-<html> 
-    <!-- HTML is heirarchial: tags like this define elements on the page. 
-    Each tag does something different. For example:
-        - The <html> tag defines the whole document.
-        - The <h1> tag defines a large heading
-        - The <p> tag defines a paragraph
-        - Tags appear as an opening <div> and closing </div> pair
-    -->
-
-<head>    
-    <!-- The head tag links to resources our page needs and defines information about it. Tags in the <head> aren't displayed on the page. -->
-
-    <!-- This is a link to a stylesheet which contains rules about how each element on the page should be defined-->
-    <!-- Try swapping to example3.css or another, and take a look at each example.css to see if you understand it-->
-    <link rel="stylesheet" type="text/css" href="Example3.css">
-    <title>My Portfolio</title> <!-- The title displayed in the browser tab, not on the page itself -->
-
-    <!-- This is a link to the vega-lite packages which we're using to make graphs -->
-    <script src="https://cdn.jsdelivr.net/npm/vega@6.4.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.4.3"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.3.0"></script>
-
-    <style>
-        /* CSS styles can be defined here, or in a separate CSS file */
-        #chartGrid {
-            display: flex;
-        }
-        
-    </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
-<body> 
-<!-- The body tag contains the elements that visitors to our page will see. -->
-    <h1 class="big" style="margin-bottom: 0px;"> <!-- We have added a class to the header called "big" which we can use to style it in the CSS -->
-        <!-- This is a header, it is the largest text on the page -->
-        PP434 Portfolio
-    </h1>
-    <p style="margin-top: 0px; color: darkblue">
-        <!-- we're setting the margin to 0px so the header and authour name are close together -->
-        Marco Uzzau | <a href="https://www.linkedin.com/in/marco-uzzau/">LinkedIn</a> | <a
-            href="https://www.github.com/MarcoUzzauLSE">GitHub</a>
-    </p>
-    <h3 class="small"> <!-- We have added a class to the header called "small" which we can use to style it in the CSS -->
-        Welcome to my portfolio. Here you can find a display of my work!  
-    </h3>
+<body>
 
-    <style>
-  .chart-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    align-items: start;
-  }
-  .chart-row figure {
-    margin: 0;
-    min-width: 0;
-  }
-</style>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="name" href="index.html">Marco Uzzau</a>
+      <nav aria-label="Main">
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="cv.pdf">CV</a>
+        <a href="https://www.github.com/MarcoUzzauLSE">GitHub</a>
+      </nav>
+    </div>
+  </header>
 
-<section>
-  <div class="chart-description">
-    <h2>Section CC1: Hosting. Display charts in your own site.</h2>
-    <p>
-      I've organised the page into sections, with each section containing a chart, title and a description. Here, you can find the charts and some context.
-      As a first example, you will see some basic charts from Richard Davies' library with a focus on UK unemployment rate.
-    </p>
-  </div>
-  
-  <!-- Wrapper that places the two figures on the same line -->
-  <div class="chart-row">
-    <figure id="Location1"></figure>
-    <figure id="Location2"></figure>
-  </div>
-</section>
-
-<script>
-  let figure_1_spec = "uk_unemp_rate.json";
-  let figure_2_spec = "global_unemp_rate.json";
-
-  vegaEmbed('#Location1', figure_1_spec);
-  vegaEmbed('#Location2', figure_2_spec);
-</script>
-
-<section>
-  <div class="chart-description">
-    <h2>Section CC2: Building. Create your own visualisations</h2>
-    <p>
-      As a second example, you will see another couple of charts created on the Economics Observatory. This time with a focus on Italy and its economic situation.
+  <div class="intro">
+    <h1>Marco Uzzau</h1>
+    <p class="byline">Double Degree MPA & MPP student at LSE & Hertie School</p>
+    <p class="welcome">
+      I use data and visualisation to understand economic and policy questions.
+      I am strongly interested in the fields of energy, welfare and foreign affairs.
     </p>
   </div>
 
-  <!-- Wrapper that places the two figures on the same line -->
-  <div class="chart-row">
-    <figure id="Location3"></figure>
-    <figure id="Location4"></figure>
-  </div>
-</section>
+  <main>
 
-<script>
-  let figure_3_spec = "italy_consumer_spending.json";
-  let figure_4_spec = "italy_gdp_per_capita.json";
+    <section id="about">
+      <h2 class="page-heading">About me</h2>
+      <div class="prose">
+        <p>
+          I am a passionate and driven advocate for public policy and international cooperation, currently pursuing a Double Degree Master's in Public Administration at LSE and a Master's in Public Policy at Hertie School with a focus on Policy Analysis. My academic journey, including a Bachelor's degree from Bocconi University and an exchange at Cornell University, has equipped me with robust analytical and problem-solving skills.
+        </p>
+        <p>
+          With hands-on experience in policy advocacy, conference organization, and academic consulting, I thrive in collaborative, multicultural environments. From engaging with policymakers to addressing child poverty and enhancing EU governance, I am dedicated to creating meaningful, measurable change.
+          I am committed to leveraging my skills to promote sustainable development and social equity. Let's connect to explore opportunities for collaboration and impact!
+        </p>
+         <p>
+          I am committed to leveraging my skills to promote sustainable development and social equity.
+        </p>
+      </div>
+    </section>
 
-  vegaEmbed('#Location3', figure_3_spec);
-  vegaEmbed('#Location4', figure_4_spec);
-</script>
+    <section id="find">
+      <h2 class="page-heading">Where to find my work</h2>
+      <ul class="find-list">
+        <li class="find-item">
+          <a href="portfolio.html">Portfolio</a>
+          <p>Interactive charts from my data visualisation course, with commentary on each.</p>
+        </li>
+        <li class="find-item">
+          <a href="cv.pdf">CV</a>
+          <p>My education, experience and skills as a PDF.</p>
+        </li>
+        <li class="find-item">
+          <a href="https://www.github.com/MarcoUzzauLSE">Projects on GitHub</a>
+          <p>The code behind this site and my other projects.</p>
+        </li>
+        <li class="find-item">
+          <a href="https://www.linkedin.com/in/marco-uzzau/">LinkedIn</a>
+          <p>My professional profile and the best place to contact me.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2 class="page-heading">Contact</h2>
+      <div class="prose">
+        <p>
+          Email me at <a href="mailto:uzzau8@gmail.com">uzzau8@gmail.com</a>
+          or send a message on <a href="https://www.linkedin.com/in/marco-uzzau/">LinkedIn</a>.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    Marco Uzzau
+  </footer>
 
 </body>
-    
+
 </html>

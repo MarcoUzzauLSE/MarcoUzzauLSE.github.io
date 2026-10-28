@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PP434 Portfolio | Marco Uzzau</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@6.4.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.4.3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.3.0"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <nav aria-label="Main">
+        <a href="index.html">Home</a>
+        <a href="portfolio.html" aria-current="page">Portfolio</a>
+        <a href="cv.pdf">CV</a>
+        <a href="https://www.github.com/MarcoUzzauLSE">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="intro">
+    <h1>PP434 Portfolio</h1>
+    <p class="byline">
+      <a href="index.html">Marco Uzzau</a> |
+      <a href="https://www.linkedin.com/in/marco-uzzau/">LinkedIn</a> |
+      <a href="https://www.github.com/MarcoUzzauLSE">GitHub</a>
+    </p>
+    <p class="welcome">Welcome to my portfolio. Here you can find a display of my work!</p>
+    <nav class="jump" aria-label="Sections on this page">
+      <a href="#cc1">CC1 Hosting</a>
+      <a href="#cc2">CC2 Building</a>
+      <a href="#cc3">CC3 Policy Debate</a>
+      <a href="#cc4">CC4 Replication</a>
+      <a href="#cc5">CC5 Accessing Data</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- CC1 -->
+    <section id="cc1">
+      <div class="chart-description">
+        <h2><span class="code">CC1</span>Hosting. Display charts in your own site.</h2>
+        <p>
+          I've organised the page into sections, with each section containing a chart, title and a description. Here, you can find the charts and some context.
+          As a first example, you will see some basic charts from Richard Davies' library with a focus on UK unemployment rate.
+        </p>
+      </div>
+      <div class="chart-row">
+        <figure id="Location1"></figure>
+        <figure id="Location2"></figure>
+      </div>
+    </section>
+
+    <!-- CC2 -->
+    <section id="cc2">
+      <div class="chart-description">
+        <h2><span class="code">CC2</span>Building. Create your own visualisations</h2>
+        <p>
+          As a second example, you will see another couple of charts created on the Economics Observatory. This time with a focus on Italy and its economic situation.
+        </p>
+      </div>
+      <div class="chart-row">
+        <figure id="Location3"></figure>
+        <figure id="Location4"></figure>
+      </div>
+    </section>
+
+    <!-- CC3 -->
+    <section id="cc3">
+      <div class="chart-description">
+        <h2><span class="code">CC3</span>Policy debate. Use a visualisation in policy commentary</h2>
+        <p>
+          Should governments keep subsidising solar power? This page examines whether past support helped make solar cheap and widely adopted.
+        </p>
+      </div>
+      <div class="chart-stack">
+        <figure id="Location5"></figure>
+        <figure id="Location6"></figure>
+      </div>
+      <p class="chart-comment">
+        Solar costs fell over 99% since 1975 while capacity soared, especially in China. Support policies likely helped, but scale and technology mattered too.
+      </p>
+      <p class="source">Source: Our World in Data, based on IRENA and Nemet (2009).</p>
+    </section>
+
+    <!-- CC4 -->
+    <section id="cc4">
+      <div class="chart-description">
+        <h2><span class="code">CC4</span>Replication. Re-create, then improve, someone else's chart.</h2>
+        <p>
+          Eurostat's chart of annual inflation rates in May 2019. First the original, then my replication in Vega-Lite, then my improved version.
+        </p>
+      </div>
+      <div class="chart-stack">
+        <div>
+          <h3>1. Original chart (Eurostat)</h3>
+          <figure>
+            <img src="og_chart.jpg" alt="Eurostat bar chart of annual inflation rates in May 2019, in ascending order">
+          </figure>
+        </div>
+        <div>
+          <h3>2. My replication</h3>
+          <figure id="Location7"></figure>
+        </div>
+        <div>
+          <h3>3. My improved version</h3>
+          <figure id="Location8"></figure>
+        </div>
+      </div>
+      <p class="chart-comment">
+        Horizontal bars make names readable; the title states the key finding; muted colours highlight only EU and euro area; the UK footnote is added.
+      </p>
+      <p class="source">Source: Eurostat (original chart). Data traced manually from the chart.</p>
+    </section>
+
+    <!-- CC5 -->
+    <section id="cc5">
+    <div class="chart-description">
+        <h2><span class="code">CC5</span>Accessing data. Use a live API.</h2>
+        <p>
+        This chart loads fresh data from the World Bank API each time the page is opened.
+        </p>
+    </div>
+
+    <div class="chart-stack">
+        <figure id="Location9"></figure>
+    </div>
+
+    <div class="api-notes">
+        <h3>How the API works</h3>
+
+        <h4>a. Base URL</h4>
+        <p><code>https://api.worldbank.org/v2/</code> is the World Bank Indicators API (version 2). It is free and needs no API key.</p>
+
+     <h4>b. Elements needed to call the data</h4>
+     <ul>
+        <li><strong>Countries:</strong> <code>country/ita;fra;esp;deu</code>. Country codes go after <code>country/</code>, separated by semicolons.</li>
+        <li><strong>Indicator:</strong> <code>indicator/SP.DYN.CBRT.IN</code> is the crude birth rate per 1,000 people.</li>
+        <li><strong>Format:</strong> <code>format=json</code>. Without it, the API returns XML.</li>
+        <li><strong>Page size:</strong> <code>per_page=1000</code>. The default page is much smaller, so this keeps all 264 records in one call.</li>
+        </ul>
+
+     <h4>c. Data returned</h4>
+        <p>
+        JSON: an array whose first item is metadata (pages, total, last updated) and whose second item is the list of records.
+        Each record is one country-year, so the data are close to tidy. Country and indicator are nested objects,
+        <code>date</code> is text, and the latest year (2025) is <code>null</code>. The chart reads the second item with <code>"property": "[1]"</code>.
+        </p>
+
+        <h4>Full URL used in the chart</h4>
+        <code class="api-url">https://api.worldbank.org/v2/country/ita;fra;esp;deu/indicator/SP.DYN.CBRT.IN?format=json&amp;per_page=1000</code>
+    </div>
+
+    <p class="source">Source: World Bank, World Development Indicators (SP.DYN.CBRT.IN).</p>
+    </section>
+
+    </main>
+
+  <footer>
+    Marco Uzzau | PP434 Portfolio
+  </footer>
+
+  <script>
+    const opts = { actions: false };
+
+    vegaEmbed('#Location1', "uk_unemp_rate.json", opts);
+    vegaEmbed('#Location2', "global_unemp_rate.json", opts);
+    vegaEmbed('#Location3', "italy_consumer_spending.json", opts);
+    vegaEmbed('#Location4', "italy_gdp_per_capita.json", opts);
+    vegaEmbed('#Location5', "cheaper_solar_panel.json", opts);
+    vegaEmbed('#Location6', "solar_capacity_by_country.json", opts);
+    vegaEmbed('#Location7', "annual_infl_rate_ugly.json", opts);
+    vegaEmbed('#Location8', "annual_infl_rate_right.json", opts);
+    vegaEmbed('#Location9', "birth_rate_europe.json", opts);
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "title": "Solar capacity: 2015 vs 2024",
+  "width": 500,
+  "height": 320,
+  "data": { "url": "https://raw.githubusercontent.com/MarcoUzzauLSE/MarcoUzzauLSE.github.io/refs/heads/main/solar-pv-cumulative-capacity.csv" },
+  "transform": [
+    {
+      "filter": {
+        "field": "Entity",
+        "oneOf": ["China", "United States", "India", "Japan", "Germany", "Brazil", "Australia"]
+      }
+    },
+    { "filter": { "field": "Year", "oneOf": [2015, 2024] } }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "Entity",
+      "type": "nominal",
+      "title": null,
+      "sort": { "field": "capacity", "op": "max", "order": "descending" }
+    },
+    "yOffset": { "field": "Year", "type": "nominal" },
+    "x": {
+      "field": "Solar photovoltaic",
+      "type": "quantitative",
+      "title": "Installed capacity (GW)",
+      "axis": { "values": [0, 100, 200, 300, 400, 500, 600, 700, 800, 900]}
+    },
+    "color": {
+      "field": "Year",
+      "type": "nominal",
+      "title": "Year",
+      "scale": { "domain": [2015, 2024], "range": ["#b8c4d6", "#e0a100"] }
+    },
+    "tooltip": [
+      { "field": "Entity", "type": "nominal" },
+      { "field": "Year", "type": "nominal" },
+      { "field": "capacity", "type": "quantitative", "format": ",.1f", "title": "GW" }
+    ]
+  }
+}
